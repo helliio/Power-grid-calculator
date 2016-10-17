@@ -30,10 +30,10 @@ Partial Class Main
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
-        Me.Button9 = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
-        Me.Button11 = New System.Windows.Forms.Button()
         Me.Button12 = New System.Windows.Forms.Button()
+        Me.Button14 = New System.Windows.Forms.Button()
+        Me.Button16 = New System.Windows.Forms.Button()
         Me.ListBoxOut = New System.Windows.Forms.ListBox()
         Me.RadioButtonStep1 = New System.Windows.Forms.RadioButton()
         Me.RadioButtonStep2 = New System.Windows.Forms.RadioButton()
@@ -145,45 +145,45 @@ Partial Class Main
         Me.Button8.Text = "0"
         Me.Button8.UseVisualStyleBackColor = True
         '
-        'Button9
-        '
-        Me.Button9.BackColor = System.Drawing.Color.Red
-        Me.Button9.Location = New System.Drawing.Point(282, 163)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(27, 27)
-        Me.Button9.TabIndex = 8
-        Me.Button9.Text = "0"
-        Me.Button9.UseVisualStyleBackColor = False
-        '
         'Button10
         '
         Me.Button10.BackColor = System.Drawing.Color.Red
-        Me.Button10.Location = New System.Drawing.Point(315, 163)
+        Me.Button10.Location = New System.Drawing.Point(282, 163)
         Me.Button10.Name = "Button10"
         Me.Button10.Size = New System.Drawing.Size(27, 27)
-        Me.Button10.TabIndex = 9
+        Me.Button10.TabIndex = 8
         Me.Button10.Text = "0"
         Me.Button10.UseVisualStyleBackColor = False
-        '
-        'Button11
-        '
-        Me.Button11.BackColor = System.Drawing.Color.Red
-        Me.Button11.Location = New System.Drawing.Point(348, 163)
-        Me.Button11.Name = "Button11"
-        Me.Button11.Size = New System.Drawing.Size(27, 27)
-        Me.Button11.TabIndex = 10
-        Me.Button11.Text = "0"
-        Me.Button11.UseVisualStyleBackColor = False
         '
         'Button12
         '
         Me.Button12.BackColor = System.Drawing.Color.Red
-        Me.Button12.Location = New System.Drawing.Point(381, 163)
+        Me.Button12.Location = New System.Drawing.Point(315, 163)
         Me.Button12.Name = "Button12"
         Me.Button12.Size = New System.Drawing.Size(27, 27)
-        Me.Button12.TabIndex = 11
+        Me.Button12.TabIndex = 9
         Me.Button12.Text = "0"
         Me.Button12.UseVisualStyleBackColor = False
+        '
+        'Button14
+        '
+        Me.Button14.BackColor = System.Drawing.Color.Red
+        Me.Button14.Location = New System.Drawing.Point(348, 163)
+        Me.Button14.Name = "Button14"
+        Me.Button14.Size = New System.Drawing.Size(27, 27)
+        Me.Button14.TabIndex = 10
+        Me.Button14.Text = "0"
+        Me.Button14.UseVisualStyleBackColor = False
+        '
+        'Button16
+        '
+        Me.Button16.BackColor = System.Drawing.Color.Red
+        Me.Button16.Location = New System.Drawing.Point(381, 163)
+        Me.Button16.Name = "Button16"
+        Me.Button16.Size = New System.Drawing.Size(27, 27)
+        Me.Button16.TabIndex = 11
+        Me.Button16.Text = "0"
+        Me.Button16.UseVisualStyleBackColor = False
         '
         'ListBoxOut
         '
@@ -419,6 +419,7 @@ Partial Class Main
         '
         Me.NumericCash.Location = New System.Drawing.Point(18, 26)
         Me.NumericCash.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.NumericCash.Minimum = New Decimal(New Integer() {1000, 0, 0, -2147483648})
         Me.NumericCash.Name = "NumericCash"
         Me.NumericCash.Size = New System.Drawing.Size(100, 20)
         Me.NumericCash.TabIndex = 41
@@ -508,10 +509,10 @@ Partial Class Main
         Me.Controls.Add(Me.RadioButtonStep2)
         Me.Controls.Add(Me.RadioButtonStep1)
         Me.Controls.Add(Me.ListBoxOut)
+        Me.Controls.Add(Me.Button16)
+        Me.Controls.Add(Me.Button14)
         Me.Controls.Add(Me.Button12)
-        Me.Controls.Add(Me.Button11)
         Me.Controls.Add(Me.Button10)
-        Me.Controls.Add(Me.Button9)
         Me.Controls.Add(Me.Button8)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button6)
@@ -542,10 +543,10 @@ Partial Class Main
     Friend WithEvents Button6 As Button
     Friend WithEvents Button7 As Button
     Friend WithEvents Button8 As Button
-    Friend WithEvents Button9 As Button
     Friend WithEvents Button10 As Button
-    Friend WithEvents Button11 As Button
     Friend WithEvents Button12 As Button
+    Friend WithEvents Button14 As Button
+    Friend WithEvents Button16 As Button
     Friend WithEvents ListBoxOut As ListBox
     Friend WithEvents RadioButtonStep1 As RadioButton
     Friend WithEvents RadioButtonStep2 As RadioButton

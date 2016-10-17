@@ -2,6 +2,7 @@
     Dim total_cash As Integer = 0
 
     Private Sub Refresh_cash(Optional add As Integer = 0)
+        total_cash = NumericCash.Value
         total_cash += add
         NumericCash.Value = total_cash
     End Sub
@@ -11,11 +12,15 @@
     End Sub
 
     Private Sub ButtonUndo_Click(sender As Object, e As EventArgs) Handles ButtonUndo.Click
-
+        If ListBoxOut.Items.Count > 0 Then
+            Dim item As String = ListBoxOut.Items(ListBoxOut.Items.Count - 1)
+            Refresh_cash(Split(item, "$")(2))
+            ListBoxOut.Items.RemoveAt(ListBoxOut.Items.Count - 1)
+        End If
     End Sub
 
     Private Sub NumericCash_ValueChanged(sender As Object, e As EventArgs) Handles NumericCash.ValueChanged
-        total_cash = NumericCash.Value
+        Refresh_cash()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As MouseEventArgs) Handles Button1.MouseDown

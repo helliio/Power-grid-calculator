@@ -35,19 +35,15 @@ Partial Class Main
         Me.Button11 = New System.Windows.Forms.Button()
         Me.Button12 = New System.Windows.Forms.Button()
         Me.ListBoxOut = New System.Windows.Forms.ListBox()
-        Me.TextBoxCash = New System.Windows.Forms.TextBox()
         Me.RadioButtonStep1 = New System.Windows.Forms.RadioButton()
         Me.RadioButtonStep2 = New System.Windows.Forms.RadioButton()
         Me.RadioButtonStep3 = New System.Windows.Forms.RadioButton()
         Me.ButtonRes = New System.Windows.Forms.Button()
-        Me.ButtonReset = New System.Windows.Forms.Button()
-        Me.ButtonEnd = New System.Windows.Forms.Button()
+        Me.ButtonUndo = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ButtonBuyCity = New System.Windows.Forms.Button()
         Me.ButtonConnection = New System.Windows.Forms.Button()
         Me.ButtonPlant = New System.Windows.Forms.Button()
-        Me.TextBoxConnection = New System.Windows.Forms.TextBox()
-        Me.TextBoxPlant = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.LabelError = New System.Windows.Forms.Label()
@@ -63,6 +59,18 @@ Partial Class Main
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
+        Me.NumericCash = New System.Windows.Forms.NumericUpDown()
+        Me.NumericPlant = New System.Windows.Forms.NumericUpDown()
+        Me.NumericConnection = New System.Windows.Forms.NumericUpDown()
+        Me.NumericFromTier = New System.Windows.Forms.NumericUpDown()
+        Me.NumericToTier = New System.Windows.Forms.NumericUpDown()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.LabelProfit = New System.Windows.Forms.Label()
+        CType(Me.NumericCash, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericPlant, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericConnection, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericFromTier, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericToTier, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
@@ -185,13 +193,6 @@ Partial Class Main
         Me.ListBoxOut.Size = New System.Drawing.Size(390, 95)
         Me.ListBoxOut.TabIndex = 12
         '
-        'TextBoxCash
-        '
-        Me.TextBoxCash.Location = New System.Drawing.Point(18, 23)
-        Me.TextBoxCash.Name = "TextBoxCash"
-        Me.TextBoxCash.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxCash.TabIndex = 13
-        '
         'RadioButtonStep1
         '
         Me.RadioButtonStep1.AutoSize = True
@@ -233,23 +234,14 @@ Partial Class Main
         Me.ButtonRes.Text = "Buy resources"
         Me.ButtonRes.UseVisualStyleBackColor = True
         '
-        'ButtonReset
+        'ButtonUndo
         '
-        Me.ButtonReset.Location = New System.Drawing.Point(642, 130)
-        Me.ButtonReset.Name = "ButtonReset"
-        Me.ButtonReset.Size = New System.Drawing.Size(86, 27)
-        Me.ButtonReset.TabIndex = 18
-        Me.ButtonReset.Text = "Reset Cash"
-        Me.ButtonReset.UseVisualStyleBackColor = True
-        '
-        'ButtonEnd
-        '
-        Me.ButtonEnd.Location = New System.Drawing.Point(642, 163)
-        Me.ButtonEnd.Name = "ButtonEnd"
-        Me.ButtonEnd.Size = New System.Drawing.Size(86, 27)
-        Me.ButtonEnd.TabIndex = 19
-        Me.ButtonEnd.Text = "End Turn"
-        Me.ButtonEnd.UseVisualStyleBackColor = True
+        Me.ButtonUndo.Location = New System.Drawing.Point(642, 130)
+        Me.ButtonUndo.Name = "ButtonUndo"
+        Me.ButtonUndo.Size = New System.Drawing.Size(86, 60)
+        Me.ButtonUndo.TabIndex = 18
+        Me.ButtonUndo.Text = "Undo"
+        Me.ButtonUndo.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -286,20 +278,6 @@ Partial Class Main
         Me.ButtonPlant.TabIndex = 23
         Me.ButtonPlant.Text = "Buy Plant"
         Me.ButtonPlant.UseVisualStyleBackColor = True
-        '
-        'TextBoxConnection
-        '
-        Me.TextBoxConnection.Location = New System.Drawing.Point(528, 104)
-        Me.TextBoxConnection.Name = "TextBoxConnection"
-        Me.TextBoxConnection.Size = New System.Drawing.Size(108, 20)
-        Me.TextBoxConnection.TabIndex = 24
-        '
-        'TextBoxPlant
-        '
-        Me.TextBoxPlant.Location = New System.Drawing.Point(414, 104)
-        Me.TextBoxPlant.Name = "TextBoxPlant"
-        Me.TextBoxPlant.Size = New System.Drawing.Size(108, 20)
-        Me.TextBoxPlant.TabIndex = 25
         '
         'Label2
         '
@@ -437,11 +415,74 @@ Partial Class Main
         Me.Label15.TabIndex = 40
         Me.Label15.Text = "16"
         '
+        'NumericCash
+        '
+        Me.NumericCash.Location = New System.Drawing.Point(18, 26)
+        Me.NumericCash.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.NumericCash.Name = "NumericCash"
+        Me.NumericCash.Size = New System.Drawing.Size(100, 20)
+        Me.NumericCash.TabIndex = 41
+        '
+        'NumericPlant
+        '
+        Me.NumericPlant.Location = New System.Drawing.Point(414, 107)
+        Me.NumericPlant.Maximum = New Decimal(New Integer() {500, 0, 0, 0})
+        Me.NumericPlant.Name = "NumericPlant"
+        Me.NumericPlant.Size = New System.Drawing.Size(108, 20)
+        Me.NumericPlant.TabIndex = 42
+        '
+        'NumericConnection
+        '
+        Me.NumericConnection.Location = New System.Drawing.Point(528, 107)
+        Me.NumericConnection.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.NumericConnection.Name = "NumericConnection"
+        Me.NumericConnection.Size = New System.Drawing.Size(108, 20)
+        Me.NumericConnection.TabIndex = 43
+        '
+        'NumericFromTier
+        '
+        Me.NumericFromTier.Location = New System.Drawing.Point(414, 65)
+        Me.NumericFromTier.Name = "NumericFromTier"
+        Me.NumericFromTier.Size = New System.Drawing.Size(108, 20)
+        Me.NumericFromTier.TabIndex = 44
+        '
+        'NumericToTier
+        '
+        Me.NumericToTier.Location = New System.Drawing.Point(528, 65)
+        Me.NumericToTier.Name = "NumericToTier"
+        Me.NumericToTier.Size = New System.Drawing.Size(108, 20)
+        Me.NumericToTier.TabIndex = 45
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(411, 49)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(125, 13)
+        Me.Label16.TabIndex = 46
+        Me.Label16.Text = "Profit from city tier to tier: "
+        '
+        'LabelProfit
+        '
+        Me.LabelProfit.AutoSize = True
+        Me.LabelProfit.Location = New System.Drawing.Point(642, 67)
+        Me.LabelProfit.Name = "LabelProfit"
+        Me.LabelProfit.Size = New System.Drawing.Size(13, 13)
+        Me.LabelProfit.TabIndex = 47
+        Me.LabelProfit.Text = "0"
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(739, 204)
+        Me.Controls.Add(Me.LabelProfit)
+        Me.Controls.Add(Me.Label16)
+        Me.Controls.Add(Me.NumericToTier)
+        Me.Controls.Add(Me.NumericFromTier)
+        Me.Controls.Add(Me.NumericConnection)
+        Me.Controls.Add(Me.NumericPlant)
+        Me.Controls.Add(Me.NumericCash)
         Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.Label13)
@@ -457,19 +498,15 @@ Partial Class Main
         Me.Controls.Add(Me.LabelError)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.TextBoxPlant)
-        Me.Controls.Add(Me.TextBoxConnection)
         Me.Controls.Add(Me.ButtonPlant)
         Me.Controls.Add(Me.ButtonConnection)
         Me.Controls.Add(Me.ButtonBuyCity)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ButtonEnd)
-        Me.Controls.Add(Me.ButtonReset)
+        Me.Controls.Add(Me.ButtonUndo)
         Me.Controls.Add(Me.ButtonRes)
         Me.Controls.Add(Me.RadioButtonStep3)
         Me.Controls.Add(Me.RadioButtonStep2)
         Me.Controls.Add(Me.RadioButtonStep1)
-        Me.Controls.Add(Me.TextBoxCash)
         Me.Controls.Add(Me.ListBoxOut)
         Me.Controls.Add(Me.Button12)
         Me.Controls.Add(Me.Button11)
@@ -487,6 +524,11 @@ Partial Class Main
         Me.Name = "Main"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Power grid calculator"
+        CType(Me.NumericCash, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericPlant, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericConnection, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericFromTier, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericToTier, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -505,19 +547,15 @@ Partial Class Main
     Friend WithEvents Button11 As Button
     Friend WithEvents Button12 As Button
     Friend WithEvents ListBoxOut As ListBox
-    Friend WithEvents TextBoxCash As TextBox
     Friend WithEvents RadioButtonStep1 As RadioButton
     Friend WithEvents RadioButtonStep2 As RadioButton
     Friend WithEvents RadioButtonStep3 As RadioButton
     Friend WithEvents ButtonRes As Button
-    Friend WithEvents ButtonReset As Button
-    Friend WithEvents ButtonEnd As Button
+    Friend WithEvents ButtonUndo As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents ButtonBuyCity As Button
     Friend WithEvents ButtonConnection As Button
     Friend WithEvents ButtonPlant As Button
-    Friend WithEvents TextBoxConnection As TextBox
-    Friend WithEvents TextBoxPlant As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents LabelError As Label
@@ -533,4 +571,11 @@ Partial Class Main
     Friend WithEvents Label13 As Label
     Friend WithEvents Label14 As Label
     Friend WithEvents Label15 As Label
+    Friend WithEvents NumericCash As NumericUpDown
+    Friend WithEvents NumericPlant As NumericUpDown
+    Friend WithEvents NumericConnection As NumericUpDown
+    Friend WithEvents NumericFromTier As NumericUpDown
+    Friend WithEvents NumericToTier As NumericUpDown
+    Friend WithEvents Label16 As Label
+    Friend WithEvents LabelProfit As Label
 End Class

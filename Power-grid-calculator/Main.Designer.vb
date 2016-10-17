@@ -423,6 +423,7 @@ Partial Class Main
         Me.NumericCash.Name = "NumericCash"
         Me.NumericCash.Size = New System.Drawing.Size(100, 20)
         Me.NumericCash.TabIndex = 41
+        Me.NumericCash.Value = New Decimal(New Integer() {50, 0, 0, 0})
         '
         'NumericPlant
         '

@@ -8,7 +8,7 @@
     End Sub
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Refresh_cash()
     End Sub
 
     Private Sub ButtonUndo_Click(sender As Object, e As EventArgs) Handles ButtonUndo.Click
@@ -21,6 +21,12 @@
 
     Private Sub NumericCash_ValueChanged(sender As Object, e As EventArgs) Handles NumericCash.ValueChanged
         Refresh_cash()
+    End Sub
+
+    Private Sub ButtonPlant_Click(sender As Object, e As EventArgs) Handles ButtonPlant.Click
+        Refresh_cash(-NumericPlant.Value)
+        ListBoxOut.Items.Add("Your cash is now: $" & total_cash & " The plant cost: $" & NumericPlant.Value)
+        NumericPlant.Value = 0
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As MouseEventArgs) Handles Button1.MouseDown

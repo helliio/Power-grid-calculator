@@ -6,17 +6,21 @@
 
     Private Sub Refresh_cash(Optional add As Integer = 0)
         total_cash = NumericCash.Value
-        total_cash += add
-        If total_cash <= NumericCash.Maximum And total_cash >= NumericCash.Minimum Then
+        If total_cash + add <= NumericCash.Maximum And total_cash + add >= NumericCash.Minimum Then
+            total_cash += add
             NumericCash.Value = total_cash
-        Else
-            total_cash -= add
         End If
     End Sub
 
-    Private Sub Add_element(text As String, cost As Integer)
-        If total_cash <= NumericCash.Maximum And total_cash >= NumericCash.Minimum Then
-            ListBoxOut.Items.Add("Your cash is now: $" & total_cash & " " & text & cost)
+    Private Sub Add_element(text As String, value As Integer, isPostitive As Boolean)
+        If total_cash + value <= NumericCash.Maximum And total_cash - value >= NumericCash.Minimum Then
+            If isPostitive Then
+                total_cash += value
+            Else
+                total_cash -= value
+            End If
+            NumericCash.Value = total_cash
+            ListBoxOut.Items.Add("Your cash is now: $" & total_cash & " " & text & value)
             ListBoxOut.TopIndex = ListBoxOut.Items.Count - 1
         End If
     End Sub
@@ -43,8 +47,7 @@
     End Sub
 
     Private Sub ButtonPlant_Click(sender As Object, e As EventArgs) Handles ButtonPlant.Click
-        Refresh_cash(-NumericPlant.Value)
-        Add_element("The plant cost: $", NumericPlant.Value)
+        Add_element("The plant cost: $", NumericPlant.Value, 0)
         NumericPlant.Value = 0
     End Sub
 
@@ -170,13 +173,11 @@
         Button12.Text = 0
         Button14.Text = 0
         Button16.Text = 0
-        Refresh_cash(-cost)
-        Add_element("The resources cost: $", cost)
+        Add_element("The resources cost: $", cost, 0)
     End Sub
 
     Private Sub ButtonConnection_Click(sender As Object, e As EventArgs) Handles ButtonConnection.Click
-        Refresh_cash(-NumericConnection.Value)
-        Add_element("The connection cost: $", NumericConnection.Value)
+        Add_element("The connection cost: $", NumericConnection.Value, 0)
         NumericConnection.Value = 0
     End Sub
 
@@ -193,13 +194,11 @@
     End Sub
 
     Private Sub ButtonBuyCity_Click(sender As Object, e As EventArgs) Handles ButtonBuyCity.Click
-        Refresh_cash(-city_cost)
-        Add_element("The city cost: $", city_cost)
+        Add_element("The city cost: $", city_cost, 0)
     End Sub
 
     Private Sub ButtonBureaucracy_Click(sender As Object, e As EventArgs) Handles ButtonBureaucracy.Click
-        Refresh_cash(city_tier(NumericFromTier.Value))
-        Add_element(earnings, city_tier(NumericFromTier.Value))
+        Add_element(earnings, city_tier(NumericFromTier.Value), 1)
     End Sub
 
     Private Sub Tier_ValueChanged(sender As Object, e As EventArgs) Handles NumericFromTier.ValueChanged, NumericToTier.ValueChanged

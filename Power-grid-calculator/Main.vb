@@ -190,4 +190,12 @@
         Refresh_cash(city_tier(NumericFromTier.Value))
         Add_element("Your earnings is: $", city_tier(NumericFromTier.Value))
     End Sub
+
+    Private Sub Tier_ValueChanged(sender As Object, e As EventArgs) Handles NumericFromTier.ValueChanged, NumericToTier.ValueChanged
+        If NumericFromTier.Value <= NumericToTier.Value Then
+            LabelProfit.Text = city_tier(NumericToTier.Value) - city_tier(NumericFromTier.Value)
+        Else
+            LabelProfit.Text = "Invalid to tier value"
+        End If
+    End Sub
 End Class

@@ -1,10 +1,16 @@
 ﻿Public Class Main
     Dim total_cash As Integer = 0
+    Dim city_cost As Integer = 10
 
     Private Sub Refresh_cash(Optional add As Integer = 0)
         total_cash = NumericCash.Value
         total_cash += add
         NumericCash.Value = total_cash
+    End Sub
+
+    Private Sub Add_element(text As String, cost As Integer)
+        ListBoxOut.Items.Add("Your cash is now: $" & total_cash & " " & text & cost)
+        ListBoxOut.TopIndex = ListBoxOut.Items.Count - 1
     End Sub
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -16,6 +22,7 @@
             Dim item As String = ListBoxOut.Items(ListBoxOut.Items.Count - 1)
             Refresh_cash(Split(item, "$")(2))
             ListBoxOut.Items.RemoveAt(ListBoxOut.Items.Count - 1)
+            ListBoxOut.TopIndex = ListBoxOut.Items.Count - 1
         End If
     End Sub
 
@@ -25,7 +32,7 @@
 
     Private Sub ButtonPlant_Click(sender As Object, e As EventArgs) Handles ButtonPlant.Click
         Refresh_cash(-NumericPlant.Value)
-        ListBoxOut.Items.Add("Your cash is now: $" & total_cash & " The plant cost: $" & NumericPlant.Value)
+        Add_element("The plant cost: $", NumericPlant.Value)
         NumericPlant.Value = 0
     End Sub
 
@@ -152,6 +159,29 @@
         Button14.Text = 0
         Button16.Text = 0
         Refresh_cash(-cost)
-        ListBoxOut.Items.Add("Your cash is now: $" & total_cash & " The resources cost: $" & cost)
+        Add_element("The resources cost: $", cost)
+    End Sub
+
+    Private Sub ButtonConnection_Click(sender As Object, e As EventArgs) Handles ButtonConnection.Click
+        Refresh_cash(-NumericConnection.Value)
+        Add_element("The connection cost: $", NumericConnection.Value)
+        NumericConnection.Value = 0
+    End Sub
+
+    Private Sub RadioButtonStep1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButtonStep1.CheckedChanged
+        city_cost = 10
+    End Sub
+
+    Private Sub RadioButtonStep2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButtonStep2.CheckedChanged
+        city_cost = 15
+    End Sub
+
+    Private Sub RadioButtonStep3_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButtonStep3.CheckedChanged
+        city_cost = 20
+    End Sub
+
+    Private Sub ButtonBuyCity_Click(sender As Object, e As EventArgs) Handles ButtonBuyCity.Click
+        Refresh_cash(-city_cost)
+        Add_element("The city cost: $", city_cost)
     End Sub
 End Class

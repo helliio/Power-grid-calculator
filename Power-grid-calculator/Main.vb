@@ -1,17 +1,24 @@
 ﻿Public Class Main
     Dim total_cash As Integer = 0
     Dim city_cost As Integer = 10
+    Dim earnings As String = "Your earnings is: $"
     Dim city_tier = New Integer() {10, 22, 33, 44, 54, 64, 73, 82, 90, 98, 105, 112, 118, 124, 129, 134, 138, 142, 145, 148, 150}
 
     Private Sub Refresh_cash(Optional add As Integer = 0)
         total_cash = NumericCash.Value
         total_cash += add
-        NumericCash.Value = total_cash
+        If total_cash <= NumericCash.Maximum And total_cash >= NumericCash.Minimum Then
+            NumericCash.Value = total_cash
+        Else
+            total_cash -= add
+        End If
     End Sub
 
     Private Sub Add_element(text As String, cost As Integer)
-        ListBoxOut.Items.Add("Your cash is now: $" & total_cash & " " & text & cost)
-        ListBoxOut.TopIndex = ListBoxOut.Items.Count - 1
+        If total_cash <= NumericCash.Maximum And total_cash >= NumericCash.Minimum Then
+            ListBoxOut.Items.Add("Your cash is now: $" & total_cash & " " & text & cost)
+            ListBoxOut.TopIndex = ListBoxOut.Items.Count - 1
+        End If
     End Sub
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -21,7 +28,11 @@
     Private Sub ButtonUndo_Click(sender As Object, e As EventArgs) Handles ButtonUndo.Click
         If ListBoxOut.Items.Count > 0 Then
             Dim item As String = ListBoxOut.Items(ListBoxOut.Items.Count - 1)
-            Refresh_cash(Split(item, "$")(2))
+            If item.IndexOf(earnings) > 0 Then
+                Refresh_cash(-Split(item, "$")(2))
+            Else
+                Refresh_cash(Split(item, "$")(2))
+            End If
             ListBoxOut.Items.RemoveAt(ListBoxOut.Items.Count - 1)
             ListBoxOut.TopIndex = ListBoxOut.Items.Count - 1
         End If
@@ -188,7 +199,7 @@
 
     Private Sub ButtonBureaucracy_Click(sender As Object, e As EventArgs) Handles ButtonBureaucracy.Click
         Refresh_cash(city_tier(NumericFromTier.Value))
-        Add_element("Your earnings is: $", city_tier(NumericFromTier.Value))
+        Add_element(earnings, city_tier(NumericFromTier.Value))
     End Sub
 
     Private Sub Tier_ValueChanged(sender As Object, e As EventArgs) Handles NumericFromTier.ValueChanged, NumericToTier.ValueChanged

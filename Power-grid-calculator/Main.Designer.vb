@@ -66,6 +66,8 @@ Partial Class Main
         Me.NumericToTier = New System.Windows.Forms.NumericUpDown()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.LabelProfit = New System.Windows.Forms.Label()
+        Me.ButtonBureaucracy = New System.Windows.Forms.Button()
+        Me.Label17 = New System.Windows.Forms.Label()
         CType(Me.NumericCash, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericPlant, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericConnection, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -197,7 +199,7 @@ Partial Class Main
         '
         Me.RadioButtonStep1.AutoSize = True
         Me.RadioButtonStep1.Checked = True
-        Me.RadioButtonStep1.Location = New System.Drawing.Point(124, 26)
+        Me.RadioButtonStep1.Location = New System.Drawing.Point(129, 26)
         Me.RadioButtonStep1.Name = "RadioButtonStep1"
         Me.RadioButtonStep1.Size = New System.Drawing.Size(56, 17)
         Me.RadioButtonStep1.TabIndex = 14
@@ -208,7 +210,7 @@ Partial Class Main
         'RadioButtonStep2
         '
         Me.RadioButtonStep2.AutoSize = True
-        Me.RadioButtonStep2.Location = New System.Drawing.Point(186, 26)
+        Me.RadioButtonStep2.Location = New System.Drawing.Point(191, 26)
         Me.RadioButtonStep2.Name = "RadioButtonStep2"
         Me.RadioButtonStep2.Size = New System.Drawing.Size(56, 17)
         Me.RadioButtonStep2.TabIndex = 15
@@ -218,7 +220,7 @@ Partial Class Main
         'RadioButtonStep3
         '
         Me.RadioButtonStep3.AutoSize = True
-        Me.RadioButtonStep3.Location = New System.Drawing.Point(248, 26)
+        Me.RadioButtonStep3.Location = New System.Drawing.Point(253, 26)
         Me.RadioButtonStep3.Name = "RadioButtonStep3"
         Me.RadioButtonStep3.Size = New System.Drawing.Size(56, 17)
         Me.RadioButtonStep3.TabIndex = 16
@@ -444,6 +446,7 @@ Partial Class Main
         'NumericFromTier
         '
         Me.NumericFromTier.Location = New System.Drawing.Point(414, 65)
+        Me.NumericFromTier.Maximum = New Decimal(New Integer() {20, 0, 0, 0})
         Me.NumericFromTier.Name = "NumericFromTier"
         Me.NumericFromTier.Size = New System.Drawing.Size(108, 20)
         Me.NumericFromTier.TabIndex = 44
@@ -451,6 +454,7 @@ Partial Class Main
         'NumericToTier
         '
         Me.NumericToTier.Location = New System.Drawing.Point(528, 65)
+        Me.NumericToTier.Maximum = New Decimal(New Integer() {20, 0, 0, 0})
         Me.NumericToTier.Name = "NumericToTier"
         Me.NumericToTier.Size = New System.Drawing.Size(108, 20)
         Me.NumericToTier.TabIndex = 45
@@ -458,11 +462,11 @@ Partial Class Main
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(411, 49)
+        Me.Label16.Location = New System.Drawing.Point(525, 49)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(125, 13)
+        Me.Label16.Size = New System.Drawing.Size(108, 13)
         Me.Label16.TabIndex = 46
-        Me.Label16.Text = "Profit from city tier to tier: "
+        Me.Label16.Text = "Profit from city to tier: "
         '
         'LabelProfit
         '
@@ -473,11 +477,31 @@ Partial Class Main
         Me.LabelProfit.TabIndex = 47
         Me.LabelProfit.Text = "0"
         '
+        'ButtonBureaucracy
+        '
+        Me.ButtonBureaucracy.Location = New System.Drawing.Point(315, 21)
+        Me.ButtonBureaucracy.Name = "ButtonBureaucracy"
+        Me.ButtonBureaucracy.Size = New System.Drawing.Size(93, 27)
+        Me.ButtonBureaucracy.TabIndex = 48
+        Me.ButtonBureaucracy.Text = "Bureaucracy"
+        Me.ButtonBureaucracy.UseVisualStyleBackColor = True
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(411, 49)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(68, 13)
+        Me.Label17.TabIndex = 49
+        Me.Label17.Text = "Your city tier:"
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(739, 204)
+        Me.Controls.Add(Me.Label17)
+        Me.Controls.Add(Me.ButtonBureaucracy)
         Me.Controls.Add(Me.LabelProfit)
         Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.NumericToTier)
@@ -581,4 +605,6 @@ Partial Class Main
     Friend WithEvents NumericToTier As NumericUpDown
     Friend WithEvents Label16 As Label
     Friend WithEvents LabelProfit As Label
+    Friend WithEvents ButtonBureaucracy As Button
+    Friend WithEvents Label17 As Label
 End Class

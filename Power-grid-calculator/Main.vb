@@ -1,6 +1,7 @@
 ﻿Public Class Main
     Dim total_cash As Integer = 0
     Dim city_cost As Integer = 10
+    Dim city_tier = New Integer() {10, 22, 33, 44, 54, 64, 73, 82, 90, 98, 105, 112, 118, 124, 129, 134, 138, 142, 145, 148, 150}
 
     Private Sub Refresh_cash(Optional add As Integer = 0)
         total_cash = NumericCash.Value
@@ -183,5 +184,10 @@
     Private Sub ButtonBuyCity_Click(sender As Object, e As EventArgs) Handles ButtonBuyCity.Click
         Refresh_cash(-city_cost)
         Add_element("The city cost: $", city_cost)
+    End Sub
+
+    Private Sub ButtonBureaucracy_Click(sender As Object, e As EventArgs) Handles ButtonBureaucracy.Click
+        Refresh_cash(city_tier(NumericFromTier.Value))
+        Add_element("Your earnings is: $", city_tier(NumericFromTier.Value))
     End Sub
 End Class
